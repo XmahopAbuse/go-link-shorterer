@@ -17,7 +17,7 @@ func New(bindAddr string) *APIserver {
 	return &APIserver{
 		bindAddr: bindAddr,
 		router: mux.NewRouter(),
-		store: store.New("postgres://"),
+		store: store.New("host=localhost dbname=link-shorterer sslmode=disable password=yvxn6akk user=xmahop"),
 	}
 }
 
