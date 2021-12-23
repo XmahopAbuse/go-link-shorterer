@@ -8,6 +8,8 @@ type LinkRepository struct {
 
 func (r *LinkRepository) Create(l *model.Link) (*model.Link, error) {
 
+	l.GenerateShortUrl()
+
 	if err := r.store.db.QueryRow("INSERT INTO links (short_url, url) values ($1, $2) RETURNING url, short_url", l.ShortUrl, l.Url).Scan(&l.Url, &l.ShortUrl); err != nil {
 		return nil, err
 	}
